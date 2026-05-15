@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Reviewer — автоматическое код-ревью на русском</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4a6fa5;
+        }
+        .cta-button {
+            background: #4a6fa5;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .cta-button:hover {
+            background: #3b5a8c;
+        }
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1e2a3a;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #5a6b7f;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .hero .cta-button {
+            font-size: 1.1rem;
+            padding: 14px 36px;
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #1e2a3a;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .benefit-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .benefit-card h3 {
+            margin-bottom: 10px;
+            color: #1e2a3a;
+        }
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            text-align: center;
+        }
+        .step {
+            flex: 1 1 200px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .step-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4a6fa5;
+            margin-bottom: 10px;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .pricing-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card.featured {
+            border: 2px solid #4a6fa5;
+            transform: scale(1.02);
+        }
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e2a3a;
+            margin: 15px 0;
+        }
+        .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #5a6b7f;
+        }
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+            flex-grow: 1;
+        }
+        .pricing-card ul li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .pricing-card .cta-button {
+            margin-top: auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .faq-item h4 {
+            margin-bottom: 8px;
+            color: #1e2a3a;
+        }
+        .contact-form {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        footer {
+            background: #1e2a3a;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        /* Стили для обертки Яндекс.Формы */
+        .form-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-container iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 600px;
+        border: none;
+        }
+
+        @media (max-width: 600px) {
+           .form-container iframe {
+               height: 700px; /* На мобильных можно увеличить высоту */
+           }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">⚡ AI Code Reviewer</div>
+            </nav>
+        </div>
+    </header>
+  
+    <section class="section" id="contact">
+        <div class="container">
+            <h2>Поделитесь впечатлениями - это очень поможет проекту.</h2>
+            <div class="form-container">
+                <script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src="https://forms.yandex.ru/u/6a0765eb02848f3d7f563f16?iframe=1" frameborder="0" name="ya-form-6a0765eb02848f3d7f563f16" width="650"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>AI Code Reviewer &copy; 2026. Все права защищены.</p>
+            <p style="margin-top: 10px;">Сделано в России с ❤️</p>
+        </div>
+    </footer>
+</body>
+</html>
