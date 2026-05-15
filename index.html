@@ -207,13 +207,26 @@
             padding: 30px 0;
             margin-top: 60px;
         }
+        /* Стили для обертки Яндекс.Формы */
+        .form-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-container iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 600px;
+        border: none;
+        }
+
         @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .section {
-                padding: 50px 0;
-            }
+           .form-container iframe {
+               height: 700px; /* На мобильных можно увеличить высоту */
+           }
         }
     </style>
 </head>
@@ -285,7 +298,6 @@
         <div class="container">
             <h2>Пример отчёта</h2>
             <div style="max-width: 700px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-                <!-- Заглушка скриншота, замени на свой -->
                 <img src=Скриншот1.jpg alt="Пример AI-комментария" style="width:100%; border-radius: 8px;">
             </div>
         </div>
@@ -352,7 +364,9 @@
     <section class="section" id="contact">
         <div class="container">
             <h2>Начните бесплатно уже сегодня</h2>
-            <script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src="https://forms.yandex.ru/u/6a06ea6bd046880ed3b6e9ee?iframe=1" frameborder="0" name="ya-form-6a06ea6bd046880ed3b6e9ee" width="650"></iframe>
+            <div class="form-container">
+                <script src="https://forms.yandex.ru/_static/embed.js"></script><iframe src="https://forms.yandex.ru/u/6a06ea6bd046880ed3b6e9ee?iframe=1" frameborder="0" name="ya-form-6a06ea6bd046880ed3b6e9ee" width="650"></iframe>
+            </div>
         </div>
     </section>
 
