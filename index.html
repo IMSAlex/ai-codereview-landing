@@ -246,6 +246,19 @@
                height: 700px; /* На мобильных можно увеличить высоту */
            }
         }
+        .enterprise-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .enterprise-wrapper .pricing-card {
+            width: 270px !important;
+            max-width: 270px !important;
+            flex: 0 0 270px !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
         .pricing-card:nth-child(4) {
             width: 270px !important;
             max-width: 270px !important;
@@ -375,18 +388,20 @@
                     <a href="#contact" class="cta-button">Связаться с нами</a>
                 </div>
                 </div>
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">от 75 000 ₽<small>/мес</small></div>
-                    <ul>
-                        <li>✅ Полная изоляция (on-premise)</li>
-                        <li>✅ Количество репозиториев — индивидуально</li>
-                        <li>✅ до 4 часов консультаций с автором в месяц</li>
-                        <li>✅ Глубокая кастомизация правил</li>
-                        <li>✅ White Label</li>
-                        <li>✅ Персональная поддержка</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Обсудить условия</a>
+                <div class="enterprise-wrapper">
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">от 75 000 ₽<small>/мес</small></div>
+                        <ul>
+                            <li>✅ Полная изоляция (on-premise)</li>
+                            <li>✅ Количество репозиториев — индивидуально</li>
+                            <li>✅ до 4 часов консультаций с автором в месяц</li>
+                            <li>✅ Глубокая кастомизация правил</li>
+                            <li>✅ White Label</li>
+                            <li>✅ Персональная поддержка</li>
+                        </ul>
+                        <a href="#contact" class="cta-button">Обсудить условия</a>
+                    </div>
                 </div>
             </div>
             <div class="container" style="text-align: center; padding: 20px 0;">
