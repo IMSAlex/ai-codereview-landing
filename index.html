@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
         .container {
-            max-width: 960px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -127,23 +127,16 @@
             margin-bottom: 10px;
         }
         .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 равные колонки */
-            gap: 30px;
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 30px;
         }
 
-        @media (max-width: 960px) {
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряд на планшетах */
-             }
+        .pricing-card {
+            flex: 0 1 260px; /* не растягиваться, не сжиматься меньше 260px */
+            max-width: 280px;
         }
-
-        @media (max-width: 600px) {
-            .pricing-grid {
-             grid-template-columns: 1fr; /* 1 карточка на телефонах */
-             }
-         }
         .pricing-card.featured {
             border: 2px solid #4a6fa5;
             transform: scale(1.02);
