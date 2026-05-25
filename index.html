@@ -131,12 +131,10 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            margin: 0 auto;
-            max-width: 1200px;
         }
         .pricing-card {
-            flex: 0 1 260px;           /* базовая ширина 260px, может чуть сжиматься */
-            min-width: 240px;          /* но не уже 240px */
+            flex: 270px;           /* все карточки одинаковой ширины */
+            flex-shrink: 0;             /* не сжиматься */
             background: #fff;
             border-radius: 12px;
             padding: 40px 30px;
@@ -150,13 +148,15 @@
         }
         @media (max-width: 960px) {
             .pricing-card {
-                flex: 0 1 100%;
-                max-width: 400px;
+                width: calc(50% - 45px);   /* две в ряд с учётом gap */
+                flex-shrink: 1;
             }
         }
         @media (max-width: 600px) {
             .pricing-grid {
-                grid-template-columns: 1fr !important;
+                width: 100%;
+                max-width: 400px;
+                flex-shrink: 1;
             }
         }
         .pricing-card h3 {
