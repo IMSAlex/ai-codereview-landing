@@ -127,15 +127,16 @@
             margin-bottom: 10px;
         }
         .pricing-grid {
-            display: grid !important;
-            grid-template-columns: repeat(4, 1fr) !important;
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            justify-items: center;
             gap: 30px;
+            margin: 0 auto;
+            max-width: 1200px;
         }
         .pricing-card {
-            width: 100%;
-            max-width: 280px;
+            flex: 0 1 260px;           /* базовая ширина 260px, может чуть сжиматься */
+            min-width: 240px;          /* но не уже 240px */
             background: #fff;
             border-radius: 12px;
             padding: 40px 30px;
@@ -148,8 +149,9 @@
             border: 2px solid #4a6fa5;
         }
         @media (max-width: 960px) {
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
+            .pricing-card {
+                flex: 0 1 100%;
+                max-width: 400px;
             }
         }
         @media (max-width: 600px) {
