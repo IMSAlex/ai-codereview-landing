@@ -127,8 +127,8 @@
             margin-bottom: 10px;
         }
         .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
             justify-content: center;
             justify-items: center;
             gap: 30px;
@@ -149,12 +149,12 @@
         }
         @media (max-width: 960px) {
             .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr) !important;
             }
         }
         @media (max-width: 600px) {
             .pricing-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
         }
         .pricing-card h3 {
