@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://imsalex.github.io/ai-codereview-landing/sitemap.xml
